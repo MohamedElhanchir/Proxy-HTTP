@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Data</title>
+</head>
+<body>
+  <h1>Fetch Data</h1>
+  <button onclick="makeRequest(5)">Click it</button>
+  <script>
+    async function makeRequest(times) {
+      for (let i = 0; i < times; i++) {
+        try {
+          const response = await fetch('/data');
+          const data = await response.json();
+          console.log(`Fetch ${i + 1}, Data:`, data);
+        } catch (error) {
+          console.error(`Fetch ${i + 1} failed:`, error);
+        }
+      }
+    }
+  </script>
+</body>
+</html>
